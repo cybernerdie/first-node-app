@@ -1,11 +1,20 @@
-var url = 'https://google.com';
+const EventEmitter = require('events');
 
-console.log(__filename);
-console.log(__dirname);
+class Logger extends EventEmitter {
 
-function log(message)
-{
-    console.log(message)
+    log(message) {
+
+        console.log(message)
+
+        // Register an event
+        var args = {
+            id: 1,
+            url: 'https://google.com'
+        } 
+
+        this.emit('messageLogged', args);
+    }
+
 }
 
-module.exports = log;
+module.exports = Logger;
